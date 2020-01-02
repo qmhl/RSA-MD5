@@ -29,32 +29,14 @@ public class RsaCoderTest {
      */
     @Test
     public void testRsaCoder2() throws Exception {
-        String jsonStr = "{\"sourceId\":\"GUOMEI\",\"name\":\"马\",\"idNo\":\"210727199903228899\"}";
+        String jsonStr = "{\"certId\":\"110226199009141610\",\"name\":\"%E9%99%88%E6%B5%A9\",\"mobile\":\"13810127680\"}";
         // 加密
-        RsaCoder rsaEncoder = new RsaCoder("", priKey);
-        String s = rsaEncoder.encryptByPrivateKey(jsonStr);
+        RsaCoder rsaEncoder = new RsaCoder(pubKey, priKey);
+        String s = rsaEncoder.encryptByPublicKey(jsonStr);
         System.out.println(s);
         // 解密
-        RsaCoder rsaDecoder = new RsaCoder(pubKey, "");
-        String s1 = rsaDecoder.decryptByPublicKey(s);
-        System.out.println(s1);
-    }
-
-    /**
-     * 字符串加密解密
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testRsaCoder3() throws Exception {
-        String str = "210727199903228899";
-        // 加密
-        RsaCoder rsaEncoder = new RsaCoder("", priKey);
-        String s = rsaEncoder.encryptByPrivateKey(str);
-        System.out.println(s);
-        // 解密
-        RsaCoder rsaDecoder = new RsaCoder(pubKey, "");
-        String s1 = rsaDecoder.decryptByPublicKey(s);
+        RsaCoder rsaDecoder = new RsaCoder(pubKey, priKey);
+        String s1 = rsaDecoder.decryptByPrivateKey(s);
         System.out.println(s1);
     }
 }
