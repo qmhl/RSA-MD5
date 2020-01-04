@@ -1,4 +1,4 @@
-package com.nfbank.util;
+package com.zhangqi.util;
 
 import org.springframework.util.Base64Utils;
 

@@ -1,4 +1,4 @@
-package com.nfbank.util;
+package com.zhangqi.util;
 
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;

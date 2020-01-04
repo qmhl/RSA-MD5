@@ -1,4 +1,4 @@
-package com.nfbank.util;
+package com.zhangqi.util;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;

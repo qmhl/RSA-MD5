@@ -1,9 +1,6 @@
-package com.nfbank.util;
+package com.zhangqi.util;
 
 import java.security.MessageDigest;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
