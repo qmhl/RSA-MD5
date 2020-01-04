@@ -16,8 +16,12 @@ public class RsaCoderTest {
     public void testRsaCoder1() throws Exception {
         RsaCoder rsaCoder = new RsaCoder(pubKey, priKey);
         String str = "{\"sourceId\":\"GUOMEI\",\"name\":\"马\",\"idNo\":\"210727199903228899\"}";
+        // 根据私钥加密
+
         String s = rsaCoder.encryptByPrivateKey(str);
         System.out.println(s);
+        // 根据公钥解密
+
         String s1 = rsaCoder.decryptByPublicKey(s);
         System.out.println(s1);
     }
@@ -30,12 +34,14 @@ public class RsaCoderTest {
     @Test
     public void testRsaCoder2() throws Exception {
         String jsonStr = "{\"certId\":\"110226199009141610\",\"name\":\"%E9%99%88%E6%B5%A9\",\"mobile\":\"13810127680\"}";
-        // 加密
+        //根据pubKey, priKey  字符串生成公钥 私钥  初始化
         RsaCoder rsaEncoder = new RsaCoder(pubKey, priKey);
+        // 根据公钥加密
         String s = rsaEncoder.encryptByPublicKey(jsonStr);
         System.out.println(s);
-        // 解密
+
         RsaCoder rsaDecoder = new RsaCoder(pubKey, priKey);
+        // 根据私钥解密
         String s1 = rsaDecoder.decryptByPrivateKey(s);
         System.out.println(s1);
     }

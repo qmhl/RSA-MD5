@@ -29,6 +29,11 @@ public final class RsaCoder {
 	 */
 	private final PublicKey pubKey;
 
+	/**根据公钥和私钥字符串
+	 * 生成公钥和私钥  初始化
+	 * @param publicKeyStrInBase64  公钥字符串
+	 * @param privateKeyStrInBase64 私钥字符串
+	 */
 	public RsaCoder(String publicKeyStrInBase64, String privateKeyStrInBase64) throws Exception {
 		keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
 		if (publicKeyStrInBase64 != null && publicKeyStrInBase64.length() > 0) {
@@ -48,7 +53,7 @@ public final class RsaCoder {
 	}
 
 	/**
-	 * 
+	 * 根据私钥解密
 	 *
 	 * @param encryptedDataInBase64
 	 * @return
@@ -60,7 +65,7 @@ public final class RsaCoder {
 
 	/**
 	 * 
-	 *
+	 *根据公钥解密
 	 * @param encryptedDataInBase64
 	 * @return
 	 * @throws Exception
@@ -71,7 +76,7 @@ public final class RsaCoder {
 
 	/**
 	 * 
-	 *
+	 *根据公钥加密
 	 * @param data
 	 * @return
 	 * @throws Exception
@@ -81,7 +86,7 @@ public final class RsaCoder {
 	}
 
 	/**
-	 * 
+	 * 根据私钥加密
 	 *
 	 * @param data
 	 * @return
@@ -91,6 +96,17 @@ public final class RsaCoder {
 		return encrypt(data, priKey);
 	}
 
+	/**
+	 * 加密
+	 * @param data
+	 * @param key
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 */
 	private String encrypt(String data, Key key) throws NoSuchAlgorithmException, NoSuchPaddingException,
 			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
@@ -98,6 +114,17 @@ public final class RsaCoder {
 		return Base64.getEncoder().encodeToString(cipher.doFinal(data.getBytes(StandardCharsets.UTF_8)));
 	}
 
+	/**
+	 * 解密
+	 * @param encryptedDataInBase64
+	 * @param key
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 */
 	private String decrypt(String encryptedDataInBase64, Key key) throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
